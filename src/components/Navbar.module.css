@@ -1,10 +1,15 @@
 .navbar {
-    background-color: var(--navbar-bg);
+    background: var(--navbar-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     padding: 20px 0;
-    position: relative;
+    position: sticky;
     width: 100%;
     top: 0;
-    z-index: 2;
+    z-index: 100;
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 4px 20px var(--card-shadow);
+    transition: all 0.3s ease;
   }
   
   .navbarContent {
@@ -17,25 +22,58 @@
   }
   
   .logo {
-    color: var(--text-primary);
-    font-size: 24px;
-    font-weight: bold;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 26px;
+    font-weight: 800;
     text-decoration: none;
+    letter-spacing: -0.02em;
+    transition: all 0.3s ease;
+    position: relative;
   }
-  
+
+  .logo:hover {
+    transform: scale(1.05);
+  }
+
   .links {
     display: flex;
+    align-items: center;
+    gap: 10px;
   }
 
   .links a {
     color: var(--text-primary);
     text-decoration: none;
-    margin: 0 15px;
+    padding: 8px 16px;
     font-size: 16px;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    position: relative;
   }
-  
+
+  .links a::after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    left: 16px;
+    right: 16px;
+    height: 2px;
+    background: var(--accent-1);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+
   .links a:hover {
     color: var(--accent-1);
+    background: var(--accent-1-translucent);
+  }
+
+  .links a:hover::after {
+    transform: scaleX(1);
   }
 
   .navItems {
@@ -43,11 +81,23 @@
     align-items: center;
   }
 
+  .themeControls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-left: 20px;
+  }
+
   .themeSwitcher {
     font-size: 20px;
     cursor: pointer;
     color: var(--text-primary);
-    margin-left: 20px;
+    transition: all 0.3s ease;
+  }
+
+  .themeSwitcher:hover {
+    color: var(--accent-1);
+    transform: scale(1.1);
   }
 
   /* Responsive adjustments */

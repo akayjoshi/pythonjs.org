@@ -16,45 +16,90 @@
 }
 
 .card {
-  background-color: var(--secondary-bg);
-  border-radius: 15px;
+  background: var(--secondary-bg);
+  border-radius: 16px;
   display: flex;
   flex-direction: column;
   padding: 2.5rem;
-  align-items: flex-start; /* Align items to start for a more dynamic look */
+  align-items: flex-start;
   justify-content: flex-start;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-  text-align: left; /* Align text to left */
-  border: 1px solid var(--border-color);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 8px 24px var(--card-shadow);
+  text-align: left;
+  border: 2px solid var(--border-color);
   position: relative;
   overflow: hidden;
 }
 
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-primary);
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+  transform-origin: left;
+}
+
+.card:hover::before {
+  transform: scaleX(1);
+}
+
+.card::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, var(--accent-1-translucent) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.card:hover::after {
+  opacity: 1;
+}
+
 .card:hover {
-  transform: translateY(-10px) scale(1.02);
-  box-shadow: 0 18px 35px rgba(0, 0, 0, 0.6);
-  border-color: var(--accent-1); /* Highlight border on hover */
+  transform: translateY(-12px);
+  box-shadow: 0 20px 40px var(--card-shadow-hover);
+  border-color: var(--accent-1);
 }
 
 .iconContainer {
-  background-color: var(--accent-1); /* Accent color for icon background */
-  border-radius: 12px; /* Slightly rounded square for icon background */
+  background: var(--gradient-primary);
+  border-radius: 14px;
   padding: 1rem;
   margin-bottom: 1.8rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 70px; /* Fixed size for icon container */
+  width: 70px;
   height: 70px;
   position: relative;
   z-index: 1;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 6px 16px var(--card-shadow-hover);
+  transition: all 0.3s ease;
+}
+
+.card:hover .iconContainer {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 8px 20px var(--card-shadow-hover);
 }
 
 .icon {
   font-size: 2.5rem;
-  color: var(--primary-bg); /* Dark color for icon itself */
+  color: #ffffff;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .icon {
+  transform: scale(1.05);
 }
 
 .card h3 {

@@ -20,11 +20,11 @@ const Hero = () => {
             courses.
           </p>
           <div className={styles.buttonContainer}>
-            <Link href="#" className={styles.ctaButton}>
-              Start Learning
+            <Link href="/courses" className={styles.ctaButton}>
+              <span>Start Learning</span>
             </Link>
-            <Link href="#" className={styles.ctaButtonOutline}>
-              Browse Courses
+            <Link href="/courses" className={styles.ctaButtonOutline}>
+              <span>Browse Courses</span>
             </Link>
           </div>
         </motion.div>

@@ -5,6 +5,7 @@ import Link from 'next/link';
 import styles from './Navbar.module.css';
 import { FaMoon, FaSun } from 'react-icons/fa';
 import { ThemeContext } from '@/context/ThemeContext';
+import ThemePicker from './ThemePicker';
 
 const Navbar = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
@@ -23,8 +24,11 @@ const Navbar = () => {
             <Link href="/blog">Blog</Link>
             <Link href="/contact">Contact Us</Link>
           </div>
-          <div className={styles.themeSwitcher} onClick={toggleTheme}>
-            {theme === 'dark' ? <FaSun /> : <FaMoon />}
+          <div className={styles.themeControls}>
+            <ThemePicker />
+            <div className={styles.themeSwitcher} onClick={toggleTheme}>
+              {theme === 'dark' ? <FaSun /> : <FaMoon />}
+            </div>
           </div>
         </div>
       </div>
